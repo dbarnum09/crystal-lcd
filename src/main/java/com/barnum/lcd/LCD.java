@@ -2,7 +2,7 @@ package com.barnum.lcd;
 
 import jssc.SerialPort;
 import jssc.SerialPortException;
-public class LCDController {
+public class LCD {
 	
 	private static final int PARITY = 0;
 	private static final int STOP_BITS = 1;
@@ -43,13 +43,13 @@ public class LCDController {
 	}
 	
 	public static void main(String[] args) {
-		LCDController controller = new LCDController();
+		LCD lcd = new LCD();
 		try {
-			controller.init("/dev/tty.usbserial-CF005245");
+			lcd.init("/dev/tty.usbserial-CF005245");
 			byte b = 0x0E;
 			byte args1[] = {0x2};
-			controller.sendLCDCommand((byte) 0x2,null);
-			controller.sendLCDCommand((byte) 0x3,null);
+			lcd.sendLCDCommand((byte) 0x2,null);
+			lcd.sendLCDCommand((byte) 0x3,null);
 		} catch (LCDException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

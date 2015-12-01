@@ -13,16 +13,16 @@ import org.junit.Test;
  * @author dave.barnum
  *
  */
-public class LCDControllerTest {
+public class LCDTest {
 
 	private static final String TEST_SERIAL_PORT = "/dev/tty.usbserial-CF005245";
-	private LCDController lcdController;
+	private LCD lcdController;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		lcdController = new LCDController();
+		lcdController = new LCD();
 	}
 
 
