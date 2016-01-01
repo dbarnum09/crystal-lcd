@@ -5,7 +5,14 @@
  * @author dave.barnum, @date 10/18/15 10:29 AM
  */
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+	public boolean someLibraryMethod() {
+		return true;
+	}
+
+	public static void main(String[] args) {
+		// CoffeeShop coffeeShop = DaggerCoffeeShop.builder()
+		// .dripCoffeeModule(new DripCoffeeModule())
+		// .build();
+
+	}
 }
