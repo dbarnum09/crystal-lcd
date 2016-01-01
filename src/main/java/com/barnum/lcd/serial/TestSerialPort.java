@@ -14,6 +14,7 @@ public class TestSerialPort extends SerialPort {
 
 	@Override
 	public String getPortName() {
+		logger.info("getPortName: " + TEST_PORT);
 		return TEST_PORT;
 	}
 
