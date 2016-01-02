@@ -42,4 +42,16 @@ public class JSSCSerialPort extends com.barnum.lcd.serial.SerialPort {
 		return false;
 	}
 
+	@Override
+	public void init(String portName) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setPortName(String name) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

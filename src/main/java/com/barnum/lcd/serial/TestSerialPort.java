@@ -11,11 +11,12 @@ public class TestSerialPort extends SerialPort {
 			.getLogger(TestSerialPort.class);
 	private static final String TEST_PORT = "testPort";
 	private static boolean opened = false;
+	private static String name = TEST_PORT;
 
 	@Override
 	public String getPortName() {
 		logger.info("getPortName: " + TEST_PORT);
-		return TEST_PORT;
+		return name;
 	}
 
 	@Override
@@ -49,5 +50,15 @@ public class TestSerialPort extends SerialPort {
 	public boolean writeBytes(byte[] buffer) {
 		logger.info("writeBytes:" + Arrays.toString(buffer));
 		return false;
+	}
+
+	@Override
+	public void init(String portName) {
+		logger.info("init: " + portName);
+	}
+
+	@Override
+	public void setPortName(String name) {
+		this.name = name;
 	}
 }

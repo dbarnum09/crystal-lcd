@@ -4,6 +4,9 @@ import javax.inject.Inject;
 
 import com.barnum.lcd.serial.SerialPort;
 
+import dagger.Module;
+
+@Module
 public class LCD {
 
 	private static final int PARITY = 0;

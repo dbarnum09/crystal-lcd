@@ -1,7 +1,8 @@
 package com.barnum.lcd.modules;
 
+import com.barnum.lcd.LCD;
+import com.barnum.lcd.LCDException;
 import com.barnum.lcd.components.DaggerTestLCDComponent;
-import com.barnum.lcd.components.TestLCDComponent;
 import com.barnum.lcd.serial.SerialPort;
 import com.barnum.lcd.serial.TestSerialPort;
 
@@ -16,10 +17,19 @@ public class TestLCDModule {
 		return new TestSerialPort();
 	}
 
+	@Provides
+	LCD provideLCD() {
+		return new LCD();
+	}
+
 	public static void main(String[] args) {
-		TestLCDComponent testComponent = DaggerTestLCDComponent.builder()
-				.build();
-		SerialPort port = testComponent.serialPort();
-		System.err.println(port.getPortName());
+		LCD lcd = DaggerTestLCDComponent.create().getLcd();
+		try {
+			lcd.init("/test/port");
+		} catch (LCDException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
