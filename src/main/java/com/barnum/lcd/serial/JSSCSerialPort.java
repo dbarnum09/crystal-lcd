@@ -1,56 +1,74 @@
 package com.barnum.lcd.serial;
 
 import jssc.SerialPort;
+import jssc.SerialPortException;
 
 public class JSSCSerialPort extends com.barnum.lcd.serial.SerialPort {
+
 	SerialPort port;
 
 	@Override
 	public String getPortName() {
-		// TODO Auto-generated method stub
-		return null;
+		return port.getPortName();
 	}
 
 	@Override
 	public boolean isOpened() {
-		// TODO Auto-generated method stub
-		return false;
+		return port.isOpened();
 	}
 
 	@Override
 	public boolean openPort() {
-		// TODO Auto-generated method stub
+		try {
+			return port.openPort();
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean setParams(int baudRate, int dataBits, int stopBits,
 			int parity) {
-		// TODO Auto-generated method stub
+		try {
+			return port.setParams(baudRate, dataBits, stopBits, parity);
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean writeString(String string) {
-		// TODO Auto-generated method stub
+		try {
+			return port.writeString(string);
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean writeBytes(byte[] buffer) {
-		// TODO Auto-generated method stub
+		try {
+			port.writeBytes(buffer);
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public void init(String portName) {
-		// TODO Auto-generated method stub
-
+		port = new SerialPort(portName);
 	}
 
 	@Override
 	public void setPortName(String name) {
-		// TODO Auto-generated method stub
 
 	}
 
