@@ -2,6 +2,7 @@ package com.barnum.lcd;
 
 import javax.inject.Inject;
 
+import com.barnum.lcd.components.DaggerProductionLCDComponent;
 import com.barnum.lcd.serial.SerialPort;
 
 import dagger.Module;
@@ -18,6 +19,11 @@ public class LCD {
 	@Inject
 	SerialPort sPort;
 
+	@Inject
+	public LCD() {
+
+	}
+
 	/**
 	 * Initializes the port with default options and opens it for serial
 	 * communication.
@@ -26,6 +32,7 @@ public class LCD {
 	 * @throws LCDException
 	 */
 	public void init(String portName) throws LCDException {
+		sPort.init(portName);
 		sPort.openPort();
 		sPort.setParams(BAUD_RATE, DATA_BITS, STOP_BITS, PARITY);
 	}
@@ -47,7 +54,7 @@ public class LCD {
 	}
 
 	public static void main(String[] args) {
-		LCD lcd = new LCD();
+		LCD lcd = DaggerProductionLCDComponent.create().getLcd();
 		try {
 			lcd.init("/dev/tty.usbserial-CF005245");
 			byte b = 0x0E;
