@@ -61,4 +61,15 @@ public class TestSerialPort extends SerialPort {
 	public void setPortName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public boolean purgePort() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean closePort() {
+		return true;
+	}
 }

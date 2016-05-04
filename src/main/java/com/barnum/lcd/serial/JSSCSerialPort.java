@@ -72,4 +72,26 @@ public class JSSCSerialPort extends com.barnum.lcd.serial.SerialPort {
 
 	}
 
+	@Override
+	public boolean purgePort() {
+		try {
+			return port.purgePort(SerialPort.PURGE_TXCLEAR);
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean closePort() {
+		try {
+			return port.closePort();
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

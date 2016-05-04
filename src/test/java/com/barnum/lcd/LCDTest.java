@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.barnum.lcd.components.DaggerTestLCDComponent;
+import com.barnum.lcd.components.DaggerProductionLCDComponent;
 
 /**
  * @author dave.barnum
@@ -25,7 +25,9 @@ public class LCDTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		lcd = DaggerTestLCDComponent.create().getLcd();
+		lcd = DaggerProductionLCDComponent.create().getLcd();
+		// lcd = DaggerTestLCDComponent.create().getLcd();
+		lcd.init(TEST_SERIAL_PORT);
 	}
 
 	/**
@@ -33,21 +35,26 @@ public class LCDTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		lcd.cleanUp();
 	}
 
 	@Test
-	public void testInit() {
+	public void testTurnOffSCreen() {
 		try {
-			lcd.init(TEST_SERIAL_PORT);
+			lcd.turnOffScreen();
 		} catch (LCDException e) {
+			// TODO Auto-generated catch block
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void testInitFailure() throws LCDException {
-		// lcdController.init("/dev/nothere");
-
+	public void testTurnOnScreen() {
+		try {
+			lcd.turnOnScreen();
+		} catch (LCDException e) {
+			// TODO Auto-generated catch block
+			fail(e.getMessage());
+		}
 	}
-
 }

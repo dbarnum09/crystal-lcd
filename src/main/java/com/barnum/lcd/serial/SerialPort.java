@@ -19,4 +19,8 @@ public abstract class SerialPort {
 
 	public abstract boolean writeBytes(byte[] buffer);
 
+	public abstract boolean purgePort();
+
+	public abstract boolean closePort();
+
 }
